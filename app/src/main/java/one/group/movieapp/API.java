@@ -19,6 +19,8 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
+
 public class API {
     private static final String LOG_TAG = API.class.getSimpleName();
 
@@ -214,7 +216,7 @@ public class API {
             String movieReleaseDate = baseJsonResponse.getString("release_date");
             String movieOverview = baseJsonResponse.getString("overview");
             String movieVoteAverage = baseJsonResponse.getString("vote_average");
-
+            Log.i(TAG, "extractFeatureDetailsFromJson: "+moviePoster);
             movieItemDetails   = new MovieItem(movieTitle,  movieOverview , movieReleaseDate ,  moviePoster, movieVoteAverage);
 
 

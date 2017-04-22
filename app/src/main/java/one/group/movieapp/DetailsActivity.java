@@ -84,8 +84,8 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             title.setText(movie.getTitle());
             releaseDate.setText(movie.getReleaseDate());
             overView.setText(movie.getOverView());
-            Log.i(TAG, "onLoadFinished: "+MainListAdapter.THUMBNAIL_URL+movie.getPoster() + movie.getImage());
-            Picasso.with(getApplicationContext()).load(MainListAdapter.THUMBNAIL_URL+movie.getPoster() + movie.getImage()).into(poster);
+            Log.i(TAG, "onLoadFinished: "+MainListAdapter.THUMBNAIL_URL+movie.getPoster() + movie.getPoster());
+            Picasso.with(getApplicationContext()).load(MainListAdapter.THUMBNAIL_URL + movie.getPoster()).into(poster);
         }
 
     }
