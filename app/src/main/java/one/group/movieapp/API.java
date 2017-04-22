@@ -46,6 +46,25 @@ public class API {
         return movieItem;
     }
 
+    public static List<MovieItem> fetchMovieDetails(String requestUrl) {
+
+        URL url = createUrl(requestUrl);
+
+        // Perform HTTP request to the URL and receive a JSON response back
+        String jsonResponse = null;
+        try {
+            jsonResponse = makeHttpRequest(url);
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Problem making the HTTP request.", e);
+        }
+
+
+        List<MovieItem> movieItem = extractFeatureDetailsFromJson(jsonResponse);
+
+        return movieItem;
+    }
+
+
     /**
      * Returns new URL object from the given string URL.
      */
@@ -158,6 +177,50 @@ public class API {
 
                 movieItemLists.add(movieItemList);
             }
+
+        } catch (JSONException e) {
+            // If an error is thrown when executing any of the above statements in the "try" block,
+            // catch the exception here, so the app doesn't crash. Print a log message
+            // with the message from the exception.
+            Log.e("QueryUtils", e.toString());
+        }
+
+
+        return movieItemLists;
+
+    }
+
+
+
+
+    private static List<MovieItem> extractFeatureDetailsFromJson(String movieJson) {
+        // If the JSON string is empty or null, then return early.
+        if (TextUtils.isEmpty(movieJson)) {
+            return null;
+        }
+
+        List<MovieItem> movieItemLists = new ArrayList<>();
+
+        // Try to parse the JSON response string. If there's a problem with the way the JSON
+        // is formatted, a JSONException exception object will be thrown.
+        // Catch the exception so the app doesn't crash, and print the error message to the logs.
+        try {
+
+            // Create a JSONObject from the JSON response string
+            JSONObject baseJsonResponse = new JSONObject(movieJson);
+
+            // Extract the JSONArray associated with the key called ""results"",
+            String movieTitle = baseJsonResponse.getString("title");
+            String moviePoster = baseJsonResponse.getString("poster_path");
+            String movieReleaseDate = baseJsonResponse.getString("release_date");
+            String movieOverview = baseJsonResponse.getString("overview");
+            String movieVoteAverage = baseJsonResponse.getString("vote_average");
+
+            MovieItem movieItemDetails = new MovieItem(movieTitle,  movieOverview , movieReleaseDate ,  moviePoster, movieVoteAverage);
+
+
+                movieItemLists.add(movieItemDetails);
+
 
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
