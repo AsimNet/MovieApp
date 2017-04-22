@@ -2,6 +2,7 @@ package one.group.movieapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -88,7 +89,10 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
 
                     // Create a new intent to view the earthquake URI
                     Intent DetailsIntent = new Intent(context, DetailsActivity.class);
-                    DetailsIntent.putExtra(MainActivity.MOVIE_ID_KEY, currentMovie.getMovieId());
+                    Bundle extras = new Bundle();
+
+                    extras.putString(MainActivity.MOVIE_ID_KEY, String.valueOf(currentMovie.getMovieId()));
+                    DetailsIntent.putExtras(extras);
 
                     // Send the intent to launch a new activity
                     context.startActivity(DetailsIntent);

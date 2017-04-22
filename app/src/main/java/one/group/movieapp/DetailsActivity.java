@@ -53,8 +53,10 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         ButterKnife.bind(this);
 
         String movieId = null;
-        if(getIntent().getSerializableExtra("MainActivity.MOVIE_ID_KEY")!= null){
-           movieId = (String)getIntent().getSerializableExtra("MainActivity.MOVIE_ID_KEY");
+        Bundle data = getIntent().getExtras();
+
+        if(data.getString(MainActivity.MOVIE_ID_KEY) != null){
+           movieId = data.getString(MainActivity.MOVIE_ID_KEY);
         }
 
         url = DETAILS_MOVIE_URL_REQUEST + movieId;
@@ -67,6 +69,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     public Loader<MovieItem> onCreateLoader(int i, Bundle bundle) {
 
         url = url + API_KEY;
+        Log.i(TAG, "onCreateLoader: "+url );
         return new DetailLoader(this, url);
     }
 
@@ -81,6 +84,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             title.setText(movie.getTitle());
             releaseDate.setText(movie.getReleaseDate());
             overView.setText(movie.getOverView());
+            Log.i(TAG, "onLoadFinished: "+MainListAdapter.THUMBNAIL_URL+movie.getPoster() + movie.getImage());
             Picasso.with(getApplicationContext()).load(MainListAdapter.THUMBNAIL_URL+movie.getPoster() + movie.getImage()).into(poster);
         }
 
