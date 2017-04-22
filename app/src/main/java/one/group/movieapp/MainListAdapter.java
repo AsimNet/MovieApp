@@ -2,6 +2,9 @@ package one.group.movieapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,12 +52,32 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
 
 
     @Override
-    public void onBindViewHolder(MovieViewHolder holder, int position) {
+    public void onBindViewHolder(final MovieViewHolder holder, int position) {
         MovieItem currentMovie = this.movies.get(position);
         holder.currentMovie = currentMovie;
         holder.context = context;
         holder.movieTitle.setText(currentMovie.getTitle());
-        Picasso.with(context).load(THUMBNAIL_URL + currentMovie.getImage()).into(holder.moviePic);
+        Picasso.with(context).load(THUMBNAIL_URL + currentMovie.getImage()).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                int width = bitmap.getWidth();
+                int height = bitmap.getHeight();
+                Log.i(TAG, "onBitmapLoaded: w: "+width +", h:"+height);
+                holder.moviePic.setImageBitmap(bitmap);
+
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+
+                Log.i(TAG, "onBitmapFailed: "+errorDrawable.toString());
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        });
 
 
     }
@@ -71,6 +95,9 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
 
         @BindView(R.id.movie_title)
         TextView movieTitle;
+
+        @BindView(R.id.card_view)
+        CardView cv;
 
 
         MovieItem currentMovie;
