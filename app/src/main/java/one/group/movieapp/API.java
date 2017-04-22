@@ -43,7 +43,7 @@ public class API {
 
         List<Movie> movie = extractFeatureFromJson(jsonResponse);
 
-        return Movie;
+        return movie;
     }
 
     /**
@@ -154,7 +154,7 @@ public class API {
                 String movieThumbnail = currentBookList.getString("backdrop_path");
 
 
-                MoiveList movieList = new MoiveList( , );
+                Movie movieList = new Movie( movieId,  movieTitle,movieThumbnail  );
 
                 movieLists.add(movieList);
             }
