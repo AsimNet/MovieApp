@@ -57,4 +57,16 @@ public class MovieItem {
     public int getMovieId() {
         return mMovieId;
     }
+
+    @Override
+    public String toString() {
+        return "MovieItem{" +
+                "mMovieId=" + mMovieId +
+                ", mTitle='" + mTitle + '\'' +
+                ", mImage='" + mImage + '\'' +
+                ", mReleaseDate='" + mReleaseDate + '\'' +
+                ", mPoster='" + mPoster + '\'' +
+                ", mVote='" + mVote + '\'' +
+                '}';
+    }
 }

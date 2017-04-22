@@ -3,6 +3,7 @@ package one.group.movieapp;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +27,12 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
     private List<MovieItem> movies;
     private Context context;
     private static final String THUMBNAIL_URL = "http://image.tmdb.org/t/p/w185";
-
+    final String TAG = "MainListAdapter";
 
     public MainListAdapter(ArrayList<MovieItem> movies, Context context) {
         this.movies = movies;
         this.context = context;
+        Log.i(TAG, "MainListAdapter: ");
     }
 
     public void reloadList(ArrayList<MovieItem> mMovies) {
