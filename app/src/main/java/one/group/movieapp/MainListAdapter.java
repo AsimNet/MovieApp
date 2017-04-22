@@ -2,9 +2,6 @@ package one.group.movieapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,7 +27,7 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
 
     private List<MovieItem> movies;
     private Context context;
-    private static final String THUMBNAIL_URL = "http://image.tmdb.org/t/p/w185";
+    static final String THUMBNAIL_URL = "http://image.tmdb.org/t/p/w185";
     final String TAG = "MainListAdapter";
 
     public MainListAdapter(ArrayList<MovieItem> movies, Context context) {
@@ -115,7 +112,10 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
 
                     // Create a new intent to view the earthquake URI
                     Intent DetailsIntent = new Intent(context, DetailsActivity.class);
-                    DetailsIntent.putExtra(MainActivity.MOVIE_ID_KEY, currentMovie.getMovieId());
+                    Bundle extras = new Bundle();
+
+                    extras.putString(MainActivity.MOVIE_ID_KEY, String.valueOf(currentMovie.getMovieId()));
+                    DetailsIntent.putExtras(extras);
 
                     // Send the intent to launch a new activity
                     context.startActivity(DetailsIntent);

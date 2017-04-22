@@ -8,7 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -64,7 +66,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         LoaderManager.initLoader(MOVIE_LOADER_ID, null, this);
 
 
+        Spinner spChoose = (Spinner) findViewById(R.id.spChoose);
+
+
+        List<String> categories = new ArrayList<String>();
+        categories.add("Popular");
+        categories.add("Top Rating");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // attaching data adapter to spinner
+        spChoose.setAdapter(dataAdapter);
     }
+
 
     @Override
     public Loader<List<MovieItem>> onCreateLoader(int i, Bundle bundle) {

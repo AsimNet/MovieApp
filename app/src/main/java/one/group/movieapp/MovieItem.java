@@ -18,6 +18,7 @@ public class MovieItem {
 
     private String mVote;
 
+    private String mOverView;
 
     public MovieItem(int movieId, String title, String image) {
         mMovieId = movieId;
@@ -25,13 +26,14 @@ public class MovieItem {
         mImage = image;
     }
 
-    public MovieItem(int movieId, String title, String image, String releaseDate, String poster, String vote) {
-        mMovieId = movieId;
+    public MovieItem( String title, String overView, String releaseDate, String poster, String vote) {
+
         mTitle = title;
-        mImage = image;
+        mOverView = overView;
         mReleaseDate = releaseDate;
         mPoster = poster;
         mVote = vote;
+
     }
 
     public String getTitle() {
@@ -57,6 +59,8 @@ public class MovieItem {
     public int getMovieId() {
         return mMovieId;
     }
+
+    public String getOverView(){return mOverView;}
 
     @Override
     public String toString() {
