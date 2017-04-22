@@ -22,7 +22,7 @@
         android:id="@+id/poster"
         android:layout_width="88dp"
         android:layout_height="104dp"
-        android:layout_gravity="right"/>
+        android:layout_gravity="left"/>
     </FrameLayout>
 
     <FrameLayout
@@ -34,7 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            tools:text="lkdfjkdjgkdfjkdjkjdkjdkjf" />
+            tools:text="lkdfjkdjgkdfjkdjkjdkjdkjf"
+            android:layout_gravity="start"/>
 
         <TextView
             android:id="@+id/title1"
