@@ -5,23 +5,22 @@
     android:layout_height="88dp"
     android:background="@color/background_tan"
     android:orientation="vertical">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/movie_pic"
+        />
+
     <TextView
         android:id="@+id/movie_title"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_weight="1"
         android:gravity="bottom"
         android:textAlignment="center"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@android:color/black"
         android:textStyle="bold"
         tools:text="Movie" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/movie_pic"
-        />
-
-
 </FrameLayout>
