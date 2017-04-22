@@ -46,7 +46,7 @@ public class API {
         return movieItem;
     }
 
-    public static List<MovieItem> fetchMovieDetails(String requestUrl) {
+    public static MovieItem fetchMovieDetails(String requestUrl) {
 
         URL url = createUrl(requestUrl);
 
@@ -59,7 +59,7 @@ public class API {
         }
 
 
-        List<MovieItem> movieItem = extractFeatureDetailsFromJson(jsonResponse);
+        MovieItem movieItem = extractFeatureDetailsFromJson(jsonResponse);
 
         return movieItem;
     }
@@ -193,14 +193,13 @@ public class API {
 
 
 
-    private static List<MovieItem> extractFeatureDetailsFromJson(String movieJson) {
+    private static MovieItem extractFeatureDetailsFromJson(String movieJson) {
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(movieJson)) {
             return null;
         }
 
-        List<MovieItem> movieItemLists = new ArrayList<>();
-
+        MovieItem movieItemDetails = new MovieItem (null,null,null,null,null);
         // Try to parse the JSON response string. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
@@ -216,10 +215,7 @@ public class API {
             String movieOverview = baseJsonResponse.getString("overview");
             String movieVoteAverage = baseJsonResponse.getString("vote_average");
 
-            MovieItem movieItemDetails = new MovieItem(movieTitle,  movieOverview , movieReleaseDate ,  moviePoster, movieVoteAverage);
-
-
-                movieItemLists.add(movieItemDetails);
+            movieItemDetails   = new MovieItem(movieTitle,  movieOverview , movieReleaseDate ,  moviePoster, movieVoteAverage);
 
 
         } catch (JSONException e) {
@@ -230,7 +226,7 @@ public class API {
         }
 
 
-        return movieItemLists;
+        return movieItemDetails;
 
     }
 
