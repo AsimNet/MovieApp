@@ -5,6 +5,7 @@ import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private LoaderManager LoaderManager;
 
+    private StaggeredGridLayoutManager gaggeredGridLayoutManager;
+
     final String TAG = "MainActivity";
     String url;
 
@@ -52,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        gaggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(gaggeredGridLayoutManager);
 
         adapter = new MainListAdapter(new ArrayList<MovieItem>(), this);
         recyclerView.setAdapter(adapter);
