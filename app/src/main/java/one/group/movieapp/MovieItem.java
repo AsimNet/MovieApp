@@ -60,6 +60,8 @@ public class MovieItem {
         return mMovieId;
     }
 
+    public String getOverView(){return mOverView;}
+
     @Override
     public String toString() {
         return "MovieItem{" +

@@ -9,7 +9,7 @@ import java.util.List;
  * Created by MOHANAAD on 4/22/17.
  */
 
-public class DetailLoader extends AsyncTaskLoader<List<MovieItem>> {
+public class DetailLoader extends AsyncTaskLoader<MovieItem> {
 
 
 private String mUrl;
@@ -27,12 +27,12 @@ protected void onStartLoading() {
 
 
 @Override
-public List<MovieItem> loadInBackground() {
+public MovieItem loadInBackground() {
         if (mUrl == null) {
         return null;
         }
 
-        List<MovieItem> Movies = API.fetchMovieDetails(mUrl);
-        return Movies;
+        MovieItem Movie = API.fetchMovieDetails(mUrl);
+        return Movie;
         }
         }

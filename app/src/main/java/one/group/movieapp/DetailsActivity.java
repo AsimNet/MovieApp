@@ -6,6 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<MovieItem>> {
+public class DetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<MovieItem> {
 
     private static String DETAILS_MOVIE_URL_REQUEST ="http://api.themoviedb.org/3/movie/";
 
@@ -22,25 +26,31 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
 
     private LoaderManager LoaderManager;
 
-    private MainListAdapter adapter;
-
     final String TAG = "DetailActivity";
 
-    @BindView(R.id.list)
-    RecyclerView recyclerView;
-
     String url;
+
+    @BindView(R.id.perceived_magnitude)
+    TextView vote;
+
+    @BindView(R.id.title1)
+    TextView title;
+
+    @BindView(R.id.release)
+    TextView releaseDate;
+
+    @BindView(R.id.overview)
+    TextView overView;
+
+    @BindView(R.id.poster)
+    ImageView poster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-
         ButterKnife.bind(this);
-
-        adapter = new MainListAdapter(new ArrayList<MovieItem>(), this);
-        recyclerView.setAdapter(adapter);
 
         String movieId = null;
         if(getIntent().getSerializableExtra("MainActivity.MOVIE_ID_KEY")!= null){
@@ -54,30 +64,30 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     }
 
     @Override
-    public Loader<List<MovieItem>> onCreateLoader(int i, Bundle bundle) {
+    public Loader<MovieItem> onCreateLoader(int i, Bundle bundle) {
 
         url = url + API_KEY;
-        return new MovieLoader(this, url);
+        return new DetailLoader(this, url);
     }
 
     @Override
-    public void onLoadFinished(Loader<List<MovieItem>> loader, List<MovieItem> movies) {
+    public void onLoadFinished(Loader<MovieItem> loader, MovieItem movie) {
 
         Log.i(TAG, "onLoadFinished: ");
 
-        for (int i = 0 ; i< movies.size() ; i++){
-            Log.i(TAG, "onLoadFinished: "+movies.get(i).toString());
+        if (movie != null ) {
+
+            vote.setText(movie.getVote());
+            title.setText(movie.getTitle());
+            releaseDate.setText(movie.getReleaseDate());
+            overView.setText(movie.getOverView());
+            Picasso.with(getApplicationContext()).load(MainListAdapter.THUMBNAIL_URL+movie.getPoster() + movie.getImage()).into(poster);
         }
-        if (movies != null && !movies.isEmpty()) {
-            adapter.reloadList((ArrayList<MovieItem>) movies);
-            adapter.notifyItemInserted(movies.size() - 1);
-        }
+
     }
 
     @Override
-    public void onLoaderReset(Loader<List<MovieItem>> loader) {
-
-        recyclerView.removeAllViewsInLayout();
-        adapter.notifyDataSetChanged();
+    public void onLoaderReset(Loader<MovieItem> loader) {
+        loader.cancelLoad();
     }
 }
