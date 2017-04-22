@@ -1,53 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_tan"
-    android:orientation="vertical"
-    tools:context="one.group.movieapp.DetailsActivity">
-    >
-<FrameLayout
+    xmlns:tools="http://schemas.android.com/tools">
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="88dp">
+    android:layout_height="200dp"
+    android:layout_marginBottom="0dp"
+    android:background="@mipmap/ic_launcher_round"
+    card_view:cardUseCompatPadding="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"/>
+
     <TextView
-        android:id="@+id/perceived_magnitude"
+        android:id="@+id/rating"
         android:layout_width="91dp"
         android:layout_height="wrap_content"
-        android:gravity="left"
         android:textColor="@android:color/black"
-        android:textSize="50sp" />
+        android:textSize="50sp"
+        android:layout_alignParentBottom="true"
+        tools:text="9,0"/>
 
-    <ImageView
-        android:id="@+id/poster"
-        android:layout_width="88dp"
-        android:layout_height="104dp"
-        android:layout_gravity="right"/>
-    </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp">
+
+
 
         <TextView
             android:id="@+id/release"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            tools:text="lkdfjkdjgkdfjkdjkjdkjdkjf"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="18sp"
+            tools:text="2017"
+
             android:layout_gravity="start"/>
 
         <TextView
             android:id="@+id/title1"
-            android:layout_marginTop="38dp"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_gravity="right"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_alignParentStart="true"
+
             tools:text="fggfgbbfgffbfgfgbfgb" />
-    </FrameLayout>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
 <TextView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textSize="18sp"
     android:id="@+id/overview"/>
-
+</android.support.v7.widget.CardView>
 </LinearLayout>

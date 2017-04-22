@@ -30,7 +30,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
 
     String url;
 
-    @BindView(R.id.perceived_magnitude)
+    @BindView(R.id.rating)
     TextView vote;
 
     @BindView(R.id.title1)
