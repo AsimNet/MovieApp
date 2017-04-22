@@ -86,7 +86,7 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
 
                     // Create a new intent to view the earthquake URI
                     Intent DetailsIntent = new Intent(context, DetailsActivity.class);
-                    DetailsIntent.putExtra("ID", currentMovie.getIid);
+                    DetailsIntent.putExtra(MainActivity.MOVIE_ID_KEY, currentMovie.getMovieId());
 
                     // Send the intent to launch a new activity
                     context.startActivity(DetailsIntent);
