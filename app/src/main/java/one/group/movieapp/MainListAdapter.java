@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 
 class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHolder> {
 
-    private ArrayList<Movie> movies;
+    private List<Movie> movies;
     private Context context;
     private static final String THUMBNAIL_URL = "http://image.tmdb.org/t/p/w185";
 
@@ -51,7 +51,7 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
         Movie currentMovie = this.movies.get(position);
         holder.currentMovie = currentMovie;
         holder.context = context;
-        holder.movieTitle.setText(currentMovie.getTitle());
+        holder.movieTitle.setText(currentMovie.getTitle);
         Picasso.with(context).load(THUMBNAIL_URL + currentMovie.getImage()).into(holder.moviePic);
 
 
