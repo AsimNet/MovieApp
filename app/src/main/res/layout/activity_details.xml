@@ -22,7 +22,7 @@
         android:id="@+id/poster"
         android:layout_width="88dp"
         android:layout_height="104dp"
-        android:layout_gravity="left"/>
+        android:layout_gravity="right"/>
     </FrameLayout>
 
     <FrameLayout
