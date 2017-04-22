@@ -28,7 +28,7 @@ public class API {
         this.mContext = mContext;
     }
 
-    public static List<Movie> fetchBookList(String requestUrl) {
+    public static List<MovieItem> fetchBookList(String requestUrl) {
 
         URL url = createUrl(requestUrl);
 
@@ -41,9 +41,9 @@ public class API {
         }
 
 
-        List<Movie> movie = extractFeatureFromJson(jsonResponse);
+        List<MovieItem> movieItem = extractFeatureFromJson(jsonResponse);
 
-        return movie;
+        return movieItem;
     }
 
     /**
@@ -123,13 +123,13 @@ public class API {
         return output.toString();
     }
 
-    private static List<Movie> extractFeatureFromJson(String movieJson) {
+    private static List<MovieItem> extractFeatureFromJson(String movieJson) {
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(movieJson)) {
             return null;
         }
 
-        List<Movie> movieLists = new ArrayList<>();
+        List<MovieItem> movieItemLists = new ArrayList<>();
 
         // Try to parse the JSON response string. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
@@ -154,9 +154,9 @@ public class API {
                 String movieThumbnail = currentBookList.getString("backdrop_path");
 
 
-                Movie movieList = new Movie( movieId,  movieTitle,movieThumbnail  );
+                MovieItem movieItemList = new MovieItem( movieId,  movieTitle,movieThumbnail  );
 
-                movieLists.add(movieList);
+                movieItemLists.add(movieItemList);
             }
 
         } catch (JSONException e) {
@@ -167,7 +167,7 @@ public class API {
         }
 
 
-        return movieLists ;
+        return movieItemLists;
 
     }
 

@@ -2,7 +2,6 @@ package one.group.movieapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,17 +23,17 @@ import butterknife.ButterKnife;
 
 class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHolder> {
 
-    private ArrayList<Movie> movies;
+    private List<MovieItem> movies;
     private Context context;
     private static final String THUMBNAIL_URL = "http://image.tmdb.org/t/p/w185";
 
 
-    public MainListAdapter(List<Movie> movies, Context context) {
+    public MainListAdapter(List<MovieItem> movies, Context context) {
         this.movies = movies;
         this.context = context;
     }
 
-    public void reloadList(ArrayList<Movie> mMovies) {
+    public void reloadList(ArrayList<MovieItem> mMovies) {
         this.movies.addAll(mMovies);
     }
 
@@ -48,7 +47,7 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
 
     @Override
     public void onBindViewHolder(MovieViewHolder holder, int position) {
-        Movie currentMovie = this.movies.get(position);
+        MovieItem currentMovie = this.movies.get(position);
         holder.currentMovie = currentMovie;
         holder.context = context;
         holder.movieTitle.setText(currentMovie.getTitle());
@@ -72,7 +71,7 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
         TextView movieTitle;
 
 
-        Movie currentMovie;
+        MovieItem currentMovie;
 
         Context context;
 

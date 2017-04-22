@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import java.util.List;
 
-public class DetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Movie>> {
+public class DetailsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<MovieItem>> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,17 +16,17 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     }
 
     @Override
-    public Loader<List<Movie>> onCreateLoader(int i, Bundle bundle) {
+    public Loader<List<MovieItem>> onCreateLoader(int i, Bundle bundle) {
         return null;
     }
 
     @Override
-    public void onLoadFinished(Loader<List<Movie>> loader, List<Movie> movies) {
+    public void onLoadFinished(Loader<List<MovieItem>> loader, List<MovieItem> movies) {
 
     }
 
     @Override
-    public void onLoaderReset(Loader<List<Movie>> loader) {
+    public void onLoaderReset(Loader<List<MovieItem>> loader) {
 
     }
 }

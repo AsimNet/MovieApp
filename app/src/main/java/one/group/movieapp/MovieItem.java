@@ -4,7 +4,7 @@ package one.group.movieapp;
  * Created by MOHANAAD on 4/22/17.
  */
 
-public class Movie {
+public class MovieItem {
 
     private int mMovieId;
 
@@ -19,13 +19,13 @@ public class Movie {
     private String mVote;
 
 
-    public Movie(int movieId, String title, String image) {
+    public MovieItem(int movieId, String title, String image) {
         mMovieId = movieId;
         mTitle = title;
         mImage = image;
     }
 
-    public Movie(int movieId, String title, String image, String releaseDate, String poster, String vote) {
+    public MovieItem(int movieId, String title, String image, String releaseDate, String poster, String vote) {
         mMovieId = movieId;
         mTitle = title;
         mImage = image;
