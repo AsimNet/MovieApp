@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="one.group.movieapp.DetailsActivity">
+    android:background="@color/background_tan"
+    android:orientation="vertical">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="88dp">
+    <TextView
+        android:id="@+id/perceived_magnitude"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/magnitude_circle"
+        android:gravity="left"
+        android:textColor="@android:color/white"
+        android:textSize="100sp" />
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_width="88dp"
+        android:layout_height="104dp"
+        android:layout_gravity="right"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            tools:text="lkdfjkdjgkdfjkdjkjdkjdkjf" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_marginTop="38dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="right"
+            tools:text="fggfgbbfgffbfgfgbfgb" />
+    </FrameLayout>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/overview"/>
+
+</LinearLayout>
