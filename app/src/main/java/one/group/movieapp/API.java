@@ -28,7 +28,7 @@ public class API {
         this.mContext = mContext;
     }
 
-    public static List<MovieItem> fetchBookList(String requestUrl) {
+    public static List<MovieItem> fetchMovieList(String requestUrl) {
 
         URL url = createUrl(requestUrl);
 

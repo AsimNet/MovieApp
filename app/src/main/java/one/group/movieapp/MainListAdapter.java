@@ -28,7 +28,7 @@ class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.MovieViewHold
     private static final String THUMBNAIL_URL = "http://image.tmdb.org/t/p/w185";
 
 
-    public MainListAdapter(List<MovieItem> movies, Context context) {
+    public MainListAdapter(ArrayList<MovieItem> movies, Context context) {
         this.movies = movies;
         this.context = context;
     }
